@@ -1,0 +1,66 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "-" : {
+
+    },
+    "%lld" : {
+
+    },
+    "🎾" : {
+
+    },
+    "info.match.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Match information"
+          }
+        }
+      }
+    },
+    "info.openset" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opening the set?"
+          }
+        }
+      }
+    },
+    "info.pointsInGame" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Points in Games"
+          }
+        }
+      }
+    },
+    "Lista de partidos:" : {
+
+    },
+    "Partido 1" : {
+
+    },
+    "Partido 2" : {
+
+    },
+    "Partido 3" : {
+
+    },
+    "Start" : {
+
+    },
+    "Start match" : {
+
+    }
+  },
+  "version" : "1.0"
+}
