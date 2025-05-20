@@ -75,8 +75,12 @@
 		9DB152772DC4A8BC009CF606 /* Exceptions for "PointPro" folder in "PointWatch Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Assets.xcassets,
 				Entities/MatchDataEntity.swift,
 				Localizable.xcstrings,
+				Utils/PPButton.swift,
+				Utils/PPButtonSlider.swift,
+				Utils/PPScoreBoard.swift,
 			);
 			target = 9DD7EEE02DBF7564002D78A7 /* PointWatch Watch App */;
 		};

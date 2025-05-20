@@ -81,7 +81,7 @@ class ScoreboardViewModel: ObservableObject {
             }
         } else if (globalPointA == globalPointB) && (globalPointA >= 6) {
             print("tie break perro!")
-            // nueva pantalla donde se plantee el tie-break ?? 
+            // nueva pantalla donde se plantee el tie-break ??
         }
     }
     func restPoint() {
