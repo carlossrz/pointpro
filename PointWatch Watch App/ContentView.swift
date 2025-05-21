@@ -22,7 +22,7 @@ struct ContentView: View {
                             .opacity(0.8)
                             .shadow(color: .gray, radius: 2, x: 1, y: 1)
                         
-                        Text("Start match")
+                        Text("text.startmatch")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.white)
                     }

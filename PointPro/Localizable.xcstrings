@@ -10,6 +10,20 @@
     "🎾" : {
 
     },
+    "add.details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add details"
+          }
+        }
+      }
+    },
+    "Hello, World!" : {
+
+    },
     "info.match.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -58,8 +72,38 @@
     "Start" : {
 
     },
-    "Start match" : {
-
+    "text.matchlist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Match List"
+          }
+        }
+      }
+    },
+    "text.startmatch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Match"
+          }
+        }
+      }
+    },
+    "text.teammate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teammate:"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

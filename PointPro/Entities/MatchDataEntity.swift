@@ -32,24 +32,46 @@ struct MatchData: Codable {
     let teammates: String
     let date: String
     var games: [GameScore]
-    let isWinner: Bool
     var pointType: pointsInGame
+    var finalScore: String {
+        "\(team1Wins)-\(team2Wins)"
+    }
+    var isWinner: Bool {
+        team1Wins > team2Wins
+    }
     
-    init(id: UUID, teammates: String, date: String, games: [GameScore], isWinner: Bool, pointType: pointsInGame) {
+    private var team1Wins: Int {
+        games.filter { $0.team1 > $0.team2 }.count
+    }
+    private var team2Wins: Int {
+        games.filter { $0.team2 > $0.team1 }.count
+    }
+    
+    init(id: UUID, teammates: String, date: String, games: [GameScore], pointType: pointsInGame) {
         self.id = id
         self.teammates = teammates
-        self.date = date
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.timeStyle = .none
+        self.date = formatter.string(from: Date())
+        
         self.games = games
-        self.isWinner = isWinner
         self.pointType = pointType
     }
     
     init() {
         self.id = UUID()
         self.teammates = ""
-        self.date = Date().description
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.timeStyle = .none
+        self.date = formatter.string(from: Date())
+        
         self.games = []
-        self.isWinner = false
         self.pointType = .bo1
     }
 }
