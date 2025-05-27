@@ -23,7 +23,7 @@ struct PPMatchCell: View {
             VStack(alignment: .leading) {
                 Text("text.teammate")
                     .font(.system(size: 10, weight: .light, design: .default))
-                Text(matchData.teammates.isEmpty ? "add.details" : matchData.teammates)
+                Text((matchData.teammates ?? "").isEmpty ? "add.details" : matchData.teammates!)
                     .font(.system(size: 20, weight: .light, design: .default))
             }
             Spacer()
@@ -40,6 +40,7 @@ struct PPMatchCell: View {
     PPMatchCell(matchData: MatchData(id: UUID(),
                                      teammates: "Antony Davids",
                                      date: "20/10/2024",
+                                     location: "",
                                      games: [(GameScore(team1: 6, team2: 0)),
                                              (GameScore(team1: 2, team2: 6)),
                                              (GameScore(team1: 6, team2: 5))],

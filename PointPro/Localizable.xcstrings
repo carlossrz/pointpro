@@ -1,11 +1,27 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "-" : {
+
+    },
+    "%@" : {
 
     },
     "%lld" : {
 
+    },
+    "%lld - %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld - %2$lld"
+          }
+        }
+      }
     },
     "🎾" : {
 
@@ -21,8 +37,16 @@
         }
       }
     },
-    "Hello, World!" : {
-
+    "date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date:"
+          }
+        }
+      }
     },
     "info.match.title" : {
       "extractionState" : "manual",
@@ -57,20 +81,33 @@
         }
       }
     },
-    "Lista de partidos:" : {
-
-    },
-    "Partido 1" : {
-
-    },
-    "Partido 2" : {
-
-    },
-    "Partido 3" : {
+    "location" : {
 
     },
     "Start" : {
 
+    },
+    "text.detailsMacthes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Match details"
+          }
+        }
+      }
+    },
+    "text.location" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location"
+          }
+        }
+      }
     },
     "text.matchlist" : {
       "extractionState" : "manual",
@@ -79,6 +116,20 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Match List"
+          }
+        }
+      }
+    },
+    "text.matchList" : {
+
+    },
+    "text.results" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Results"
           }
         }
       }
@@ -104,6 +155,9 @@
           }
         }
       }
+    },
+    "text.where" : {
+
     }
   },
   "version" : "1.0"

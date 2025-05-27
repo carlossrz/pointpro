@@ -9,15 +9,32 @@ import SwiftUI
 import SwiftData
 
 struct MatchListView: View {
-    @Query private var matches: [MatchData]
-    @Environment(\.modelContext) private var context
+//    @Query private var matches: [MatchData]
+//    @Environment(\.modelContext) private var context
+    
+    @StateObject var vm = MatchListViewModel()
+    @State var showCreate: Bool = false
     
     var body: some View {
         NavigationStack {
             List {
-//                ForEach(matches){ match in
-//                    PPMatchCell(matchData: match)
-//                }
+                ForEach(matches){ match in
+                    PPMatchCell(matchData: match)
+                }
+            }
+            .toolbar{
+                ToolbarItem(placement: .primaryAction, content: {
+                    Button{
+                        showCreate.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                })
+            }.sheet(isPresented: $showCreate) {
+                NavigationStack {
+                    //MatchDetailView(habit: .constant(nil))
+                }
+                .presentationDragIndicator(.visible)
             }
         }.navigationTitle("text.matchList")
     }

@@ -31,6 +31,9 @@ struct MatchData: Codable {
     let id: UUID
     let teammates: String
     let date: String
+    var teammates: String?
+    var date: String
+    var location: String?
     var games: [GameScore]
     var pointType: pointsInGame
     var finalScore: String {
@@ -47,9 +50,10 @@ struct MatchData: Codable {
         games.filter { $0.team2 > $0.team1 }.count
     }
     
-    init(id: UUID, teammates: String, date: String, games: [GameScore], pointType: pointsInGame) {
+    init(id: UUID, teammates: String, date: String, location: String, games: [GameScore], pointType: pointsInGame) {
         self.id = id
         self.teammates = teammates
+        self.location = location
         
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -63,7 +67,6 @@ struct MatchData: Codable {
     
     init() {
         self.id = UUID()
-        self.teammates = ""
         
         let formatter = DateFormatter()
         formatter.dateStyle = .medium

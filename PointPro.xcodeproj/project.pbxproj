@@ -77,6 +77,7 @@
 			membershipExceptions = (
 				Assets.xcassets,
 				Entities/MatchDataEntity.swift,
+				"Extensions/String+Ext.swift",
 				Localizable.xcstrings,
 				Utils/PPButton.swift,
 				Utils/PPButtonSlider.swift,
