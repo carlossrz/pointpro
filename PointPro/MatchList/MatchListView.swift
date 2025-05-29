@@ -12,8 +12,9 @@ struct MatchListView: View {
     @Query private var matches: [MatchData]
     @Environment(\.modelContext) private var context
     
-    @StateObject var vm = MatchListViewModel()
+    //@StateObject var vm = MatchListViewModel()
     @State var showCreate: Bool = false
+    @State private var matchEdit: MatchData?
     
     var body: some View {
         NavigationStack {
@@ -21,6 +22,14 @@ struct MatchListView: View {
                 ForEach(matches){ match in
                     PPMatchCell(matchData: match)
                         .swipeActions {
+                            Button(role: .none) {
+                                withAnimation {
+                                    matchEdit = match
+                                }
+                            }label: {
+                                Label("key.edit", systemImage: "pencil")
+                                    .symbolVariant(.fill)
+                            }
                             Button(role: .destructive) {
                                 withAnimation {
                                     context.delete(match)
@@ -44,13 +53,18 @@ struct MatchListView: View {
             }.sheet(isPresented: $showCreate) {
                 NavigationStack {
                     CreateMatchData(newMatch: .constant(MatchData()))
-                    //MatchDetailView(habit: .constant(nil))
                 }
                 .presentationDragIndicator(.visible)
+            }.sheet(item: $matchEdit) {
+                matchEdit = nil
+            } content: { item in
+                MatchDetailView(match: .constant(item))
+                    .presentationDragIndicator(.visible)
             }
         }.navigationTitle("text.matchList")
     }
 }
+
 
 #Preview {
     MatchListView()
