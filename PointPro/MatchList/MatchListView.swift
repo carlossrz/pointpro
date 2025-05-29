@@ -9,8 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct MatchListView: View {
-//    @Query private var matches: [MatchData]
-//    @Environment(\.modelContext) private var context
+    @Query private var matches: [MatchData]
+    @Environment(\.modelContext) private var context
     
     @StateObject var vm = MatchListViewModel()
     @State var showCreate: Bool = false
@@ -20,6 +20,17 @@ struct MatchListView: View {
             List {
                 ForEach(matches){ match in
                     PPMatchCell(matchData: match)
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                withAnimation {
+                                    context.delete(match)
+                                    try? context.save()
+                                }
+                            } label: {
+                                Label("key.delete", systemImage: "trash")
+                                    .symbolVariant(.fill)
+                            }
+                        }
                 }
             }
             .toolbar{
@@ -32,6 +43,7 @@ struct MatchListView: View {
                 })
             }.sheet(isPresented: $showCreate) {
                 NavigationStack {
+                    CreateMatchData(newMatch: .constant(MatchData()))
                     //MatchDetailView(habit: .constant(nil))
                 }
                 .presentationDragIndicator(.visible)

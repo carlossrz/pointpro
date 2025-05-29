@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 enum pointsInGame: String, CaseIterable, Identifiable, Codable {
     case bo1 = "Best of One"
@@ -27,10 +28,9 @@ enum pointsInGame: String, CaseIterable, Identifiable, Codable {
     }
 }
 
-struct MatchData: Codable {
-    let id: UUID
-    let teammates: String
-    let date: String
+@Model
+class MatchData {
+    @Attribute(.unique) var id: UUID
     var teammates: String?
     var date: String
     var location: String?
@@ -41,6 +41,18 @@ struct MatchData: Codable {
     }
     var isWinner: Bool {
         team1Wins > team2Wins
+    }
+    var matchDate: Date {
+        get {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            return formatter.date(from: date) ?? Date()
+        }
+        set {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            date = formatter.string(from: newValue)
+        }
     }
     
     private var team1Wins: Int {
@@ -79,9 +91,15 @@ struct MatchData: Codable {
     }
 }
 
-struct GameScore: Codable {
-    let team1: Int
-    let team2: Int
+@Model
+class GameScore {
+    var team1: Int
+    var team2: Int
+    
+    init(team1: Int, team2: Int) {
+        self.team1 = team1
+        self.team2 = team2
+    }
 }
 
 

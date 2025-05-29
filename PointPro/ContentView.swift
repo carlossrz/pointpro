@@ -9,8 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-//    @Environment(\.modelContext) private var modelContext
-//    @Query private var items: [Item]
+    @Environment(\.modelContext) private var modelContext
+    @Query private var matches: [MatchData]
     var body: some View {
         TabView{
             MatchListView()
@@ -18,12 +18,11 @@ struct ContentView: View {
                     Image(systemName: "house.fill")
                     Text("text.matchlist")
                 }
-                //StatsView
         }
     }
 }
 
-#Preview {
-    ContentView()
-//        .modelContainer(for: Item.self, inMemory: true)
-}
+//#Preview {
+//    ContentView()
+////        .modelContainer(for: Item.self, inMemory: true)
+//}

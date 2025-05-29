@@ -45,7 +45,7 @@ struct ScoreBoardView: View {
             //
             //            } label: {
             //                Text("Finalizar partido")
-            //                    
+            //
             //            }
         }.padding()
             .onAppear(perform: {
@@ -55,10 +55,10 @@ struct ScoreBoardView: View {
                 }
             })
             .onChange(of: vm.shouldDismiss) { newValue in
-                        if newValue {
-                            dismiss()
-                        }
-                    }
+                if newValue {
+                    dismiss()
+                }
+            }
     }
 }
 
