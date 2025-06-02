@@ -81,11 +81,89 @@
         }
       }
     },
-    "location" : {
+    "key.attention" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attention!"
+          }
+        }
+      }
+    },
+    "key.delete" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "key.edit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        }
+      }
+    },
+    "OK" : {
 
+    },
+    "save.match" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Match"
+          }
+        }
+      }
     },
     "Start" : {
 
+    },
+    "Team 1" : {
+
+    },
+    "Team 2" : {
+
+    },
+    "text.addset" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add set"
+          }
+        }
+      }
+    },
+    "text.completedFields" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't forget to fill in all fields!"
+          }
+        }
+      }
+    },
+    "text.date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        }
+      }
     },
     "text.detailsMacthes" : {
       "extractionState" : "manual",
@@ -97,6 +175,9 @@
           }
         }
       }
+    },
+    "text.game_mode" : {
+
     },
     "text.location" : {
       "extractionState" : "manual",
@@ -121,7 +202,14 @@
       }
     },
     "text.matchList" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Match List"
+          }
+        }
+      }
     },
     "text.results" : {
       "extractionState" : "manual",
@@ -155,9 +243,6 @@
           }
         }
       }
-    },
-    "text.where" : {
-
     }
   },
   "version" : "1.0"
