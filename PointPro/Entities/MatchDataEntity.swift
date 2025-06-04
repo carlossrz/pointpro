@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-enum pointsInGame: String, CaseIterable, Identifiable, Codable {
+enum MatchFormat: String, CaseIterable, Identifiable, Codable {
     case bo1 = "Best of One"
     case bo3 = "Best of Three"
     case bo5 = "Best of Five"
@@ -28,6 +28,11 @@ enum pointsInGame: String, CaseIterable, Identifiable, Codable {
     }
 }
 
+enum PlayerSide: String, Codable {
+    case left
+    case right
+}
+
 @Model
 class MatchData {
     @Attribute(.unique) var id: UUID
@@ -35,7 +40,10 @@ class MatchData {
     var date: String
     var location: String?
     var games: [GameScore]
-    var pointType: pointsInGame
+    var pointType: MatchFormat
+    var position: PlayerSide
+    
+    
     var finalScore: String {
         "\(team1Wins)-\(team2Wins)"
     }
@@ -62,7 +70,7 @@ class MatchData {
         games.filter { $0.team2 > $0.team1 }.count
     }
     
-    init(id: UUID, teammates: String, date: String, location: String, games: [GameScore], pointType: pointsInGame) {
+    init(id: UUID, teammates: String, date: String, location: String, games: [GameScore], pointType: MatchFormat, position: PlayerSide) {
         self.id = id
         self.teammates = teammates
         self.location = location
@@ -75,6 +83,7 @@ class MatchData {
         
         self.games = games
         self.pointType = pointType
+        self.position = .right
     }
     
     init() {
@@ -88,6 +97,7 @@ class MatchData {
         
         self.games = []
         self.pointType = .bo1
+        self.position = .right
     }
 }
 

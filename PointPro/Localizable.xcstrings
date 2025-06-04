@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
     "-" : {
 
     },
@@ -44,6 +41,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Date:"
+          }
+        }
+      }
+    },
+    "five" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "five"
+          }
+        }
+      }
+    },
+    "four" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "four"
           }
         }
       }
@@ -115,7 +134,19 @@
     "OK" : {
 
     },
+    "one" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "one"
+          }
+        }
+      }
+    },
     "save.match" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -179,6 +210,16 @@
     "text.game_mode" : {
 
     },
+    "text.left" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Left"
+          }
+        }
+      }
+    },
     "text.location" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -222,6 +263,26 @@
         }
       }
     },
+    "text.right" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Right"
+          }
+        }
+      }
+    },
+    "text.selectposition" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select position"
+          }
+        }
+      }
+    },
     "text.startmatch" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -240,6 +301,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Teammate:"
+          }
+        }
+      }
+    },
+    "three" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "three"
           }
         }
       }

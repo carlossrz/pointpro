@@ -13,13 +13,15 @@ struct CreateMatchData: View {
     
     @Binding var newMatch : MatchData
     
-    @State private var selectedGameMode: pointsInGame = .bo1
+    @State private var selectedGameMode: MatchFormat = .bo1
     
     @State private var team1Score = 0
     @State private var team2Score = 0
     
+    @State private var isPresented: Bool = false
+    
     let scoreOptions = Array(0...7)
-
+    
     var body: some View {
         Form {
             TextField("text.location",text: Binding(
@@ -30,69 +32,73 @@ struct CreateMatchData: View {
                 get: { newMatch.teammates ?? "" },
                 set: { newMatch.teammates = $0 }
             ))
-            DatePicker("Fecha del partido", selection: $newMatch.matchDate, displayedComponents: .date)
+            Picker("text.selectposition", selection: $newMatch.position) {
+                Text("text.left").tag(PlayerSide.left)
+                Text("text.right").tag(PlayerSide.right)
+            }
+            DatePicker("text.date", selection: $newMatch.matchDate, displayedComponents: .date)
                 .datePickerStyle(.compact)
-            
             
             
             Section(header: Text("text.game_mode")) {
                 Picker("info.pointsInGame", selection: $newMatch.pointType) {
-                    ForEach(pointsInGame.allCases) { game in
+                    ForEach(MatchFormat.allCases) { game in
                         Text(game.rawValue).tag(game)
                     }
                 }.pickerStyle(.palette)
-                    .labelsHidden()
-            }
-            
-            if newMatch.games.count > 0 {
-                Section(header: Text("text.game_mode")) {
-                    HStack(spacing:20) {
-                        ForEach(newMatch.games, id: \.self) { game in
-                            HStack{
-                                Text("\(game.team1) - \(game.team2)")
-                                    .foregroundStyle( (game.team1>game.team2) ? .green : .red)
-                                    .font(.system(size: 40, weight: .bold))
+                    .padding()
+                
+                if newMatch.games.count < newMatch.pointType.numberOfGames {
+                    VStack {
+                        VStack {
+                            Picker("Team 1", selection: $team1Score) {
+                                ForEach(scoreOptions, id: \.self) { score in
+                                    Text("\(score)")
+                                }
                             }
+                            .pickerStyle(.segmented)
+                            .frame(maxWidth: .infinity)
+                            
+                            Picker("Team 2", selection: $team2Score) {
+                                ForEach(scoreOptions, id: \.self) { score in
+                                    Text("\(score)")
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                            .frame(maxWidth: .infinity)
+                        }.frame(height: 80)
+                        Button("text.addset") {
+                            let newGame = GameScore(team1: team1Score, team2: team2Score)
+                            newMatch.games.append(newGame)
+                            team1Score = 0
+                            team2Score = 0
                         }
-                    }
-                    
+                    }.padding()
+                }
+                if newMatch.games.count > 0 {
+                        PPResultsCardView(match: newMatch)
                 }
             }
         }
-        if newMatch.games.count < newMatch.pointType.numberOfGames {
-            VStack {
-                HStack {
-                    Picker("Team 1", selection: $team1Score) {
-                        ForEach(scoreOptions, id: \.self) { score in
-                            Text("\(score)")
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                    .frame(maxWidth: .infinity)
-                    
-                    Picker("Team 2", selection: $team2Score) {
-                        ForEach(scoreOptions, id: \.self) { score in
-                            Text("\(score)")
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                    .frame(maxWidth: .infinity)
-                }.frame(height: 80)
-                Button("Añadir Set") {
-                    let newGame = GameScore(team1: team1Score, team2: team2Score)
-                    newMatch.games.append(newGame)
-                    team1Score = 0
-                    team2Score = 0
-                }
-            }.padding()
+        
+        PPButtonSlider(text:"save.match") {
+            if ((newMatch.teammates?.isEmpty) != nil) || ((newMatch.location?.isEmpty) != nil) {
+                context.insert(newMatch)
+                try? context.save()
+                dismiss()
+            } else {
+                isPresented.toggle()
+            }
         }
-        Button("Guardar partido (en desarrollo)") {
-            
-            context.insert(newMatch)
-            try? context.save()
-            print(">>>>>Nuevo match creado: \(newMatch)")
-            dismiss()
-        }
+        .alert("key.attention",
+                isPresented: $isPresented,
+                actions: {
+            Button("OK") {}},
+                message: {
+            Text("text.completedFields")
+        })
+        .frame(height: 60)
+        .padding(.bottom,10)
     }
 }
 

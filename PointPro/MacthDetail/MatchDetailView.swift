@@ -43,36 +43,13 @@ struct MatchDetailView: View {
                         }
                     }
                     Section(header: Text("text.results")) {
-                        VStack(spacing:20) {
-                            ForEach(match.games, id: \.self) { game in
-                                HStack{
-                                    Text("\(game.team1) - \(game.team2)")
-                                        .foregroundStyle( (game.team1>game.team2) ? .green : .red)
-                                        .font(.system(size: 40, weight: .bold))
-                                    Spacer()
-                                    VStack{
-                                        Text("40")
-                                        Text("30")
-                                    }
-                                    VStack{
-                                        Text("40")
-                                        Text("0")
-                                    }
-                                    VStack{
-                                        Text("40")
-                                        Text("0")
-                                    }
-                                    
-                                        
-                                }
-                            }
-                        }
-                    }
+                        PPResultsCardView(match: match)
+                    }.padding(-10)
                 }
-            }
-
+            }.padding(.top,30)
+            
         }
-                
+        
         
     }
 }
@@ -85,5 +62,6 @@ struct MatchDetailView: View {
                                                games: [(GameScore(team1: 6, team2: 0)),
                                                        (GameScore(team1: 2, team2: 6)),
                                                        (GameScore(team1: 6, team2: 5))],
-                                               pointType: .bo3)))
+                                               pointType: .bo3,
+                                               position: .right)))
 }

@@ -17,14 +17,14 @@ struct InfoMatchView: View {
     @State var matchData = MatchData()
     @State var isOpenSet: Bool = false
     
-    @State private var selectedGameMode: pointsInGame = .bo1
+    @State private var selectedGameMode: MatchFormat = .bo1
     
     var body: some View {
         NavigationStack{
             VStack(alignment:.leading, spacing:4) {
                 Text("info.match.title")
                 Picker("info.pointsInGame", selection: $selectedGameMode) {
-                    ForEach(pointsInGame.allCases) { game in
+                    ForEach(MatchFormat.allCases) { game in
                         Text(game.rawValue).tag(game)
                     }
                 }

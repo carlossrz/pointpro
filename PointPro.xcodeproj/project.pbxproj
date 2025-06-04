@@ -76,12 +76,14 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
+				Components/PPButton.swift,
+				Components/PPButtonSlider.swift,
+				Components/PPResult.swift,
+				Components/PPResultsCardView.swift,
+				Components/PPScoreBoard.swift,
 				Entities/MatchDataEntity.swift,
 				"Extensions/String+Ext.swift",
 				Localizable.xcstrings,
-				Utils/PPButton.swift,
-				Utils/PPButtonSlider.swift,
-				Utils/PPScoreBoard.swift,
 			);
 			target = 9DD7EEE02DBF7564002D78A7 /* PointWatch Watch App */;
 		};

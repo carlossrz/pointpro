@@ -27,23 +27,27 @@ struct PPMatchCell: View {
                     .font(.system(size: 20, weight: .light, design: .default))
             }
             Spacer()
-            Circle()
-                .fill(Color.red)
-                .frame(width:20)
-                .opacity(0.8)
-                .shadow(color: .gray, radius: 2, x: 1, y: 1)
+            if ((matchData.teammates ?? "").isEmpty ||
+                (matchData.location ?? "").isEmpty ) {
+                Circle()
+                    .fill(Color.red)
+                    .frame(width:20)
+                    .opacity(0.8)
+                    .shadow(color: .gray, radius: 2, x: 1, y: 1)
+            }
         }
     }
 }
 
 #Preview {
     PPMatchCell(matchData: MatchData(id: UUID(),
-                                     teammates: "Antony Davids",
+                                     teammates: "",
                                      date: "20/10/2024",
                                      location: "",
                                      games: [(GameScore(team1: 6, team2: 0)),
                                              (GameScore(team1: 2, team2: 6)),
                                              (GameScore(team1: 6, team2: 5))],
-                                     pointType: .bo3))
+                                     pointType: .bo3,
+                                     position: .right))
     .padding()
 }

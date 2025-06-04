@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PPButtonSlider: View {
+    @State var text: String = "start".localizedValue
     @State var offset: CGFloat = .zero
     @State var widthOfSlide: CGFloat = .zero
     @State var userDragging: Bool = false
@@ -72,7 +73,7 @@ struct PPButtonSlider: View {
                         }
                     }
                     
-                    Text("Start")
+                    Text(text.localizedValue)
                         .opacity(userDragging ? 0.5 : 1.0)
                         .foregroundStyle(.white)
                         .fontWeight(.bold)
@@ -83,7 +84,7 @@ struct PPButtonSlider: View {
                 }
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 
