@@ -37,7 +37,7 @@ enum PlayerSide: String, Codable {
 class MatchData {
     @Attribute(.unique) var id: UUID
     var teammates: String?
-    var date: String
+    var date: Date
     var location: String?
     var games: [GameScore]
     var pointType: MatchFormat
@@ -50,18 +50,6 @@ class MatchData {
     var isWinner: Bool {
         team1Wins > team2Wins
     }
-    var matchDate: Date {
-        get {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
-            return formatter.date(from: date) ?? Date()
-        }
-        set {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yyyy"
-            date = formatter.string(from: newValue)
-        }
-    }
     
     private var team1Wins: Int {
         games.filter { $0.team1 > $0.team2 }.count
@@ -70,17 +58,11 @@ class MatchData {
         games.filter { $0.team2 > $0.team1 }.count
     }
     
-    init(id: UUID, teammates: String, date: String, location: String, games: [GameScore], pointType: MatchFormat, position: PlayerSide) {
+    init(id: UUID, teammates: String, date: Date, location: String, games: [GameScore], pointType: MatchFormat, position: PlayerSide) {
         self.id = id
         self.teammates = teammates
         self.location = location
-        
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.dateFormat = "dd/MM/yyyy"
-        formatter.timeStyle = .none
-        self.date = formatter.string(from: Date())
-        
+        self.date = date
         self.games = games
         self.pointType = pointType
         self.position = .right
@@ -88,13 +70,7 @@ class MatchData {
     
     init() {
         self.id = UUID()
-        
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.dateFormat = "dd/MM/yyyy"
-        formatter.timeStyle = .none
-        self.date = formatter.string(from: Date())
-        
+        self.date = Date()
         self.games = []
         self.pointType = .bo1
         self.position = .right
@@ -102,11 +78,13 @@ class MatchData {
 }
 
 @Model
-class GameScore {
+class GameScore: Hashable {
+    @Attribute(.unique) var id: UUID
     var team1: Int
     var team2: Int
     
     init(team1: Int, team2: Int) {
+        self.id = UUID()
         self.team1 = team1
         self.team2 = team2
     }

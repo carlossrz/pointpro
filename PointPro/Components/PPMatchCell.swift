@@ -16,7 +16,7 @@ struct PPMatchCell: View {
                 Text(matchData.finalScore)
                     .font(.system(size: 25, weight: .bold, design: .default))
                     .foregroundStyle(matchData.isWinner ? .green : .red)
-                Text(matchData.date)
+                Text(matchData.date.shortFormatted)
                     .font(.system(size: 10, weight: .light, design: .default))
             }
             Divider()
@@ -42,7 +42,7 @@ struct PPMatchCell: View {
 #Preview {
     PPMatchCell(matchData: MatchData(id: UUID(),
                                      teammates: "",
-                                     date: "20/10/2024",
+                                     date: Date(),
                                      location: "",
                                      games: [(GameScore(team1: 6, team2: 0)),
                                              (GameScore(team1: 2, team2: 6)),

@@ -57,7 +57,7 @@ struct MatchDetailView: View {
 #Preview {
     MatchDetailView(match: .constant(MatchData(id: UUID(),
                                                teammates: "",
-                                               date: "20/10/2024",
+                                               date: Date(),
                                                location: "",
                                                games: [(GameScore(team1: 6, team2: 0)),
                                                        (GameScore(team1: 2, team2: 6)),

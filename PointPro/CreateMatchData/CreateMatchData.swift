@@ -36,7 +36,7 @@ struct CreateMatchData: View {
                 Text("text.left").tag(PlayerSide.left)
                 Text("text.right").tag(PlayerSide.right)
             }
-            DatePicker("text.date", selection: $newMatch.matchDate, displayedComponents: .date)
+            DatePicker("text.date", selection: $newMatch.date, displayedComponents: .date)
                 .datePickerStyle(.compact)
             
             

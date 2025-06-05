@@ -82,6 +82,7 @@
 				Components/PPResultsCardView.swift,
 				Components/PPScoreBoard.swift,
 				Entities/MatchDataEntity.swift,
+				"Extensions/Date+Ext.swift",
 				"Extensions/String+Ext.swift",
 				Localizable.xcstrings,
 			);

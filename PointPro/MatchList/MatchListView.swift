@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct MatchListView: View {
-    @Query private var matches: [MatchData]
+    @Query(sort: \MatchData.date,order: .reverse) private var matches: [MatchData]
     @Environment(\.modelContext) private var context
     
     //@StateObject var vm = MatchListViewModel()
