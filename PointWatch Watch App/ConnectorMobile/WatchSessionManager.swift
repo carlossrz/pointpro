@@ -20,7 +20,6 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
         }
     }
     
-    // Método obligatorio desde watchOS 9 en adelante
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: (any Error)?) {
         if let error = error {
             print("❌ Activación fallida: \(error.localizedDescription)")
@@ -56,7 +55,6 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
             return
         }
         
-        // ✅ Ahora sí codifica y transfiere
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         do {
@@ -71,8 +69,6 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
         }
     }
     
-    
-    // Opcional: manejo de errores o logs
     func session(_ session: WCSession, didFinish userInfoTransfer: WCSessionUserInfoTransfer, error: Error?) {
         if let error = error {
             print("Transferencia fallida: \(error.localizedDescription)")

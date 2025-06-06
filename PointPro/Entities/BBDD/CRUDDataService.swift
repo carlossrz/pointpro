@@ -23,12 +23,6 @@ final class CRUDDataService {
         try? ctx.save()
     }
 
-    func updateMatch(_ match: MatchData) {
-        guard let ctx = modelContext else { return }
-        // Como match está en ctx, cualquier cambio es automático
-        try? ctx.save()
-    }
-
     func deleteMatch(_ match: MatchData) {
         guard let ctx = modelContext else { return }
         ctx.delete(match)
