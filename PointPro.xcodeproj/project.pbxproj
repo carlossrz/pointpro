@@ -78,6 +78,7 @@
 				Assets.xcassets,
 				Components/PPButton.swift,
 				Components/PPButtonSlider.swift,
+				Components/PPCircleButton.swift,
 				Components/PPResult.swift,
 				Components/PPResultsCardView.swift,
 				Components/PPScoreBoard.swift,

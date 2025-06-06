@@ -45,6 +45,17 @@
         }
       }
     },
+    "finish.match" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finish match"
+          }
+        }
+      }
+    },
     "five" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -151,12 +162,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Save Match"
+            "value" : "Save match"
           }
         }
       }
     },
-    "Start" : {
+    "set %@" : {
 
     },
     "Team 1" : {
@@ -248,6 +259,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Match List"
+          }
+        }
+      }
+    },
+    "text.newMatch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New match"
           }
         }
       }

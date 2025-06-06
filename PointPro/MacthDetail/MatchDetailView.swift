@@ -22,7 +22,7 @@ struct MatchDetailView: View {
                     Text(match.finalScore)
                         .foregroundStyle( (match.isWinner) ? .ppGreenBall : .red)
                         .font(.system(size: 70, weight: .bold))
-                    Text("\(match.date)")
+                    Text("\(match.date.shortFormatted)")
                         .font(.system(size: 15, weight: .bold))
                         .foregroundStyle(.white)
                 }.padding(.bottom,20)

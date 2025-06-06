@@ -41,7 +41,6 @@ struct InfoMatchView: View {
                 }
             }
             // esta info se pasara para posicionar la pelota del marcador en la siguiente pantalla ( añadiremos la logica de esa pelota segun tenga esta informacion en al pantalla)
-            Spacer()
         }
         .navigationBarBackButtonHidden(true)
         .navigationDestination(isPresented: $shouldNavigate) {
