@@ -91,3 +91,46 @@ class GameScore: Hashable {
 }
 
 
+struct MatchDataCodable: Codable {
+    var id: String
+    var teammates: String?
+    var date: Date
+    var location: String?
+    var games: [GameScoreCodable]
+    var pointType: String
+    var position: String
+}
+
+struct GameScoreCodable: Codable {
+    var team1: Int
+    var team2: Int
+}
+
+
+extension MatchData {
+    func asCodable() -> MatchDataCodable {
+        return MatchDataCodable(
+            id: id.uuidString,
+            teammates: teammates,
+            date: date,
+            location: location,
+            games: games.map { GameScoreCodable(team1: $0.team1, team2: $0.team2) },
+            pointType: "\(pointType)",
+            position: "\(position)"
+        )
+    }
+}
+
+extension MatchDataCodable {
+    func asMatchData() -> MatchData {
+        return MatchData(
+            id: UUID(uuidString: id)!,
+            teammates: teammates ?? "",
+            date: date,
+            location: location ?? "",
+            games: games.map { GameScore(team1: $0.team1, team2: $0.team2) },
+            pointType: MatchFormat(rawValue: pointType) ?? .bo1,
+            position: PlayerSide(rawValue: position) ?? .right
+        )
+    }
+}

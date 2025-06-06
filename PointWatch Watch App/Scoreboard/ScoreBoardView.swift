@@ -13,8 +13,7 @@ struct ScoreBoardView: View {
     
     @State var isOpenSet: Bool
     var matchData = MatchData()
-    
-    var items: [Int] = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    let sessionManager = WatchSessionManager()
     
     var body: some View {
         ZStack {
@@ -23,16 +22,16 @@ struct ScoreBoardView: View {
                 ScoreBoardView
                 SettingsView
             }.tabViewStyle(.carousel)
-            .toolbar{
-                ToolbarItem(placement: .topBarTrailing) {
-                                    Button {
-                                        vm.restPoint()
-                                    } label: {
-                                        Image(systemName:"arrow.counterclockwise")
-                                            .foregroundStyle(.red)
-                                    }
-                                }
-            }.padding(.top,-25)
+                .toolbar{
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            vm.restPoint()
+                        } label: {
+                            Image(systemName:"arrow.counterclockwise")
+                                .foregroundStyle(.red)
+                        }
+                    }
+                }.padding(.top,-25)
         }
         
     }
@@ -54,6 +53,12 @@ struct ScoreBoardView: View {
     @ViewBuilder
     var SettingsView: some View {
         PPButton(text: "finish.match",color:.ppGreenBall){
+#if targetEnvironment(simulator)
+            sessionManager.sendMessageMatchResult(match:vm.matchData)
+#else
+            sessionManager.sendMatchResult(match:vm.matchData)
+#endif
+            
             vm.shouldDismiss = true
         }.padding(.horizontal)
     }
@@ -92,9 +97,9 @@ struct ScoreBoardView: View {
                 vm.team = 1
                 vm.sumPoint()
             }
-//            Text("-")
-//                .font(.system(size: 30, weight: .bold))
-//                .foregroundColor(.white)
+            //            Text("-")
+            //                .font(.system(size: 30, weight: .bold))
+            //                .foregroundColor(.white)
             PPCircleButton(points: vm.pointB){
                 vm.team = 2
                 vm.sumPoint()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9DA75E282DF2D26300F24255 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA75E272DF2D26300F24255 /* WatchConnectivity.framework */; };
 		9DD7EF012DBF7565002D78A7 /* PointWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9DD7EEE12DBF7564002D78A7 /* PointWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		9D1E3FDD2DBA20BD005E1870 /* PointPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PointPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1E3FED2DBA20BE005E1870 /* PointProTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PointProTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1E3FF72DBA20BE005E1870 /* PointProUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PointProUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DA75E272DF2D26300F24255 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.4.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 		9DD7EEE12DBF7564002D78A7 /* PointWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PointWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD7EEED2DBF7565002D78A7 /* PointWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PointWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DD7EEF72DBF7565002D78A7 /* PointWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PointWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,9 @@
 		};
 		9DD7EEE22DBF7564002D78A7 /* PointWatch Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+				ConnectorMobile/WatchSessionManager.swift = sourcecode.swift;
+			};
 			path = "PointWatch Watch App";
 			sourceTree = "<group>";
 		};
@@ -132,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DA75E282DF2D26300F24255 /* WatchConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +188,7 @@
 				9DD7EEE22DBF7564002D78A7 /* PointWatch Watch App */,
 				9DD7EEF02DBF7565002D78A7 /* PointWatch Watch AppTests */,
 				9DD7EEFA2DBF7565002D78A7 /* PointWatch Watch AppUITests */,
+				9DA75E262DF2D26300F24255 /* Frameworks */,
 				9D1E3FDE2DBA20BD005E1870 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -197,6 +204,14 @@
 				9DD7EEF72DBF7565002D78A7 /* PointWatch Watch AppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9DA75E262DF2D26300F24255 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9DA75E272DF2D26300F24255 /* WatchConnectivity.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -640,6 +655,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = PointPro/PointPro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -680,6 +696,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = PointPro/PointPro.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -818,6 +835,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = PointWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.srz.PointPro;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -847,6 +865,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = PointWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.srz.PointPro;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
