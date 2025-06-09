@@ -63,5 +63,6 @@ struct MatchDetailView: View {
                                                        (GameScore(team1: 2, team2: 6)),
                                                        (GameScore(team1: 6, team2: 5))],
                                                pointType: .bo3,
+                                               isOpenSet: false ,
                                                position: .right)))
 }

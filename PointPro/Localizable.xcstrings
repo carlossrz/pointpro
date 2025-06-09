@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "-" : {
-
-    },
     "%@" : {
 
     },
@@ -170,6 +167,17 @@
     "set %@" : {
 
     },
+    "start" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
+      }
+    },
     "Team 1" : {
 
     },
@@ -193,6 +201,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Don't forget to fill in all fields!"
+          }
+        }
+      }
+    },
+    "text.configureMatch" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure Match"
           }
         }
       }
@@ -301,17 +319,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select position"
-          }
-        }
-      }
-    },
-    "text.startmatch" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Start Match"
           }
         }
       }

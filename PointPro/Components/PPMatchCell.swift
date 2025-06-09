@@ -23,7 +23,7 @@ struct PPMatchCell: View {
             VStack(alignment: .leading) {
                 Text("text.teammate")
                     .font(.system(size: 10, weight: .light, design: .default))
-                Text((matchData.teammates ?? "").isEmpty ? "add.details" : matchData.teammates!)
+                Text((matchData.teammates ?? "").isEmpty ? "add.details".localizedValue : matchData.teammates!)
                     .font(.system(size: 20, weight: .light, design: .default))
             }
             Spacer()
@@ -48,6 +48,7 @@ struct PPMatchCell: View {
                                              (GameScore(team1: 2, team2: 6)),
                                              (GameScore(team1: 6, team2: 5))],
                                      pointType: .bo3,
+                                     isOpenSet: false,
                                      position: .right))
     .padding()
 }

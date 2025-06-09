@@ -41,6 +41,7 @@ class MatchData {
     var location: String?
     var games: [GameScore]
     var pointType: MatchFormat
+    var isOpenSet: Bool = false
     var position: PlayerSide
     
     
@@ -58,13 +59,14 @@ class MatchData {
         games.filter { $0.team2 > $0.team1 }.count
     }
     
-    init(id: UUID, teammates: String, date: Date, location: String, games: [GameScore], pointType: MatchFormat, position: PlayerSide) {
+    init(id: UUID, teammates: String, date: Date, location: String, games: [GameScore], pointType: MatchFormat,isOpenSet:Bool, position: PlayerSide) {
         self.id = id
         self.teammates = teammates
         self.location = location
         self.date = date
         self.games = games
         self.pointType = pointType
+        self.isOpenSet = isOpenSet
         self.position = .right
     }
     
@@ -73,6 +75,7 @@ class MatchData {
         self.date = Date()
         self.games = []
         self.pointType = .bo1
+        self.isOpenSet = false
         self.position = .right
     }
 }
@@ -98,6 +101,7 @@ struct MatchDataCodable: Codable {
     var location: String?
     var games: [GameScoreCodable]
     var pointType: String
+    var isOpenSet: Bool
     var position: String
 }
 
@@ -116,6 +120,7 @@ extension MatchData {
             location: location,
             games: games.map { GameScoreCodable(team1: $0.team1, team2: $0.team2) },
             pointType: "\(pointType)",
+            isOpenSet: isOpenSet,
             position: "\(position)"
         )
     }
@@ -130,6 +135,7 @@ extension MatchDataCodable {
             location: location ?? "",
             games: games.map { GameScore(team1: $0.team1, team2: $0.team2) },
             pointType: MatchFormat(rawValue: pointType) ?? .bo1,
+            isOpenSet: isOpenSet,
             position: PlayerSide(rawValue: position) ?? .right
         )
     }

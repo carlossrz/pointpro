@@ -37,5 +37,6 @@ struct PPResultsCardView: View {
                                                (GameScore(team1: 6, team2: 5)),
                                                (GameScore(team1: 6, team2: 5))],
                                        pointType: .bo3,
+                                       isOpenSet: false,
                                        position: .right))
 }

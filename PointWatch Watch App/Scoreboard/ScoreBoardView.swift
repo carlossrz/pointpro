@@ -11,9 +11,8 @@ struct ScoreBoardView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var vm = ScoreboardViewModel()
     
-    @State var isOpenSet: Bool
     var matchData = MatchData()
-    let sessionManager = WatchSessionManager()
+    var onDismiss: () -> Void
     
     var body: some View {
         ZStack {
@@ -53,12 +52,8 @@ struct ScoreBoardView: View {
     @ViewBuilder
     var SettingsView: some View {
         PPButton(text: "finish.match",color:.ppGreenBall){
-#if targetEnvironment(simulator)
-            sessionManager.sendMessageMatchResult(match:vm.matchData)
-#else
-            sessionManager.sendMatchResult(match:vm.matchData)
-#endif
-            
+            vm.saveData()
+            onDismiss()
             vm.shouldDismiss = true
         }.padding(.horizontal)
     }
@@ -76,9 +71,6 @@ struct ScoreBoardView: View {
         }.padding()
             .onAppear(perform: {
                 vm.matchData = matchData
-                if isOpenSet{
-                    vm.isOpenSet = true
-                }
             })
             .onChange(of: vm.shouldDismiss) { newValue in
                 if newValue {
@@ -86,6 +78,7 @@ struct ScoreBoardView: View {
                     vm.resetPoints()
                     vm.matchData = MatchData()
                     dismiss()
+                    onDismiss()
                 }
             }
     }
@@ -97,9 +90,6 @@ struct ScoreBoardView: View {
                 vm.team = 1
                 vm.sumPoint()
             }
-            //            Text("-")
-            //                .font(.system(size: 30, weight: .bold))
-            //                .foregroundColor(.white)
             PPCircleButton(points: vm.pointB){
                 vm.team = 2
                 vm.sumPoint()
@@ -109,5 +99,5 @@ struct ScoreBoardView: View {
 }
 
 #Preview {
-    ScoreBoardView(isOpenSet: false)
+    ScoreBoardView(){}
 }

@@ -16,6 +16,7 @@ class ScoreboardViewModel: ObservableObject {
     @Published var isOpenSet: Bool = false
     @Published var shouldDismiss = false
     
+    let sessionManager = WatchSessionManager()
     
     let pointsMatch = ["0", "15", "30", "40", "ADV"]
     
@@ -77,6 +78,7 @@ class ScoreboardViewModel: ObservableObject {
             clearData()
             if matchData.pointType.numberOfGames == matchData.games.count {
                 print("Partido finalizado")
+                saveData()
                 self.shouldDismiss = true
             }
         } else if (globalPointA == globalPointB) && (globalPointA >= 6) {
@@ -111,5 +113,13 @@ class ScoreboardViewModel: ObservableObject {
     func resetPoints() {
         pointA = "0"
         pointB = "0"
+    }
+    
+    func saveData() {
+        #if targetEnvironment(simulator)
+                    sessionManager.sendMessageMatchResult(match:matchData)
+        #else
+                    sessionManager.sendMatchResult(match:matchData)
+        #endif
     }
 }
