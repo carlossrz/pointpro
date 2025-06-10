@@ -78,16 +78,18 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
-				Components/PPButton.swift,
-				Components/PPButtonSlider.swift,
-				Components/PPCircleButton.swift,
-				Components/PPResult.swift,
-				Components/PPResultsCardView.swift,
-				Components/PPScoreBoard.swift,
 				Entities/MatchDataEntity.swift,
 				"Extensions/Date+Ext.swift",
 				"Extensions/String+Ext.swift",
+				"Extensions/View+Ext.swift",
 				Localizable.xcstrings,
+				Utils/BackgroundModifier.swift,
+				Utils/Components/PPButton.swift,
+				Utils/Components/PPButtonSlider.swift,
+				Utils/Components/PPCircleButton.swift,
+				Utils/Components/PPResult.swift,
+				Utils/Components/PPResultsCardView.swift,
+				Utils/Components/PPScoreBoard.swift,
 			);
 			target = 9DD7EEE02DBF7564002D78A7 /* PointWatch Watch App */;
 		};

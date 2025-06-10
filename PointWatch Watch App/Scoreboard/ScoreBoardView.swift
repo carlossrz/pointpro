@@ -16,7 +16,6 @@ struct ScoreBoardView: View {
     
     var body: some View {
         ZStack {
-            background
             TabView {
                 ScoreBoardView
                 SettingsView
@@ -31,24 +30,9 @@ struct ScoreBoardView: View {
                         }
                     }
                 }.padding(.top,-25)
-        }
-        
+        }.backgroundGrid()
     }
-    
-    @ViewBuilder
-    var background: some View {
-        Color.ppBlue
-            .ignoresSafeArea()
-        Rectangle()
-            .frame(width: 3, height: 300)
-        Rectangle()
-            .frame(width: .infinity, height: 3)
-            .padding(.bottom, 170)
-        Rectangle()
-            .frame(width: .infinity, height: 3)
-            .padding(.top, 150)
-    }
-    
+
     @ViewBuilder
     var SettingsView: some View {
         PPButton(text: "finish.match",color:.ppGreenBall){

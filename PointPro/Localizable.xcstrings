@@ -206,6 +206,7 @@
       }
     },
     "text.configureMatch" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

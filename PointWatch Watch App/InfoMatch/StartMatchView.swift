@@ -13,55 +13,74 @@ struct StartMatchView: View {
     @State var shouldNavigate = false
     @State var matchData = MatchData()
     
+    @State private var expanded = false
+    
+    let screenSize = WKInterfaceDevice.current().screenBounds.size
+    
     var body: some View {
-        
-        NavigationStack{
+        ZStack {
             if isStart {
-                VStack(alignment:.leading, spacing:4) {
-                    Text("info.match.title")
-                    Picker("info.pointsInGame", selection: $matchData.pointType) {
-                        ForEach(MatchFormat.allCases) { game in
-                            Text(game.rawValue).tag(game)
+                InfoMatchData
+            } else {
+                ZStack {
+                    Circle()
+                        .fill(Color.ppGreenBall)
+                        .frame(width: 150, height: 150)
+                        .scaleEffect(expanded ? screenSize.height / 150 * 2 : 1)
+                        .shadow(color: .gray, radius: 2, x: 1, y: 1)
+                        .overlay(
+                            Text("text.configureMatch")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.white)
+                                .opacity(expanded ? 0 : 1)
+                        )
+                        .onTapGesture {
+                            withAnimation(.easeInOut(duration: 0.6)) {
+                                expanded = true
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                                isStart = true
+                            }
+                        }
+                }
+                .frame(width: screenSize.width, height: screenSize.height)
+                .backgroundGrid()
+            }
+        }
+        .frame(width: screenSize.width, height: screenSize.height)
+        .ignoresSafeArea()
+    }
+    
+    @ViewBuilder
+    var InfoMatchData: some View {
+        NavigationStack {
+            VStack(alignment:.leading, spacing:4) {
+                Text("info.match.title")
+                Picker("info.pointsInGame", selection: $matchData.pointType) {
+                    ForEach(MatchFormat.allCases) { game in
+                        Text(game.rawValue).tag(game)
+                    }
+                }
+                .frame(height: 70)
+                .padding(.horizontal, 10)
+                .tint(.red)
+                Toggle("info.openset",isOn: $matchData.isOpenSet)
+                    .padding(.horizontal,10)
+                    .tint(Color.ppGreenBall)
+                PPButtonSlider {
+                    shouldNavigate.toggle()
+                }
+            }.navigationBarBackButtonHidden(true)
+                .navigationDestination(isPresented: $shouldNavigate) {
+                    ScoreBoardView(matchData: matchData) {
+                        withAnimation(.easeInOut) {
+                            isStart = false
+                            expanded = false
+                            matchData = MatchData()
                         }
                     }
-                    .frame(height: 70)
-                    .padding(.horizontal, 10)
-                    .tint(.red)
-                    Toggle("info.openset",isOn: $matchData.isOpenSet)
-                        .padding(.horizontal,10)
-                        .tint(Color.ppGreenBall)
-                    
-                   PPButtonSlider {
-                       shouldNavigate.toggle()
-                    }
-                }.navigationBarBackButtonHidden(true)
-                 .navigationDestination(isPresented: $shouldNavigate) {
-                        ScoreBoardView(matchData: matchData) {
-                                withAnimation(.easeInOut) {
-                                    isStart = false
-                                    matchData = MatchData()
-                                }
-                            }
-                    }
-            } else {
-                Button {
-                    withAnimation(.bouncy(duration: 0.5)) {
-                        isStart.toggle()
-                    }
-                } label: {
-                    ZStack {
-                        Circle()
-                            .fill(Color.ppGreenBall)
-                            .frame(width: 150, height: 150)
-                            .opacity(0.8)
-                            .shadow(color: .gray, radius: 2, x: 1, y: 1)
-                        
-                        Text("text.configureMatch")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.white)
-                    }
-                }.buttonStyle(.plain)
-            }
+                }
+                .padding(.top,-15)
         }
     }
 }
