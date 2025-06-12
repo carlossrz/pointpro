@@ -31,6 +31,10 @@ enum MatchFormat: String, CaseIterable, Identifiable, Codable {
 enum PlayerSide: String, Codable {
     case left
     case right
+    
+    var localized: String {
+        self.rawValue.localizedValue
+    }
 }
 
 @Model

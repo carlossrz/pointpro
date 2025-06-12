@@ -120,6 +120,7 @@
       }
     },
     "key.delete" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -130,11 +131,22 @@
       }
     },
     "key.edit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit"
+          }
+        }
+      }
+    },
+    "left" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Left"
           }
         }
       }
@@ -149,6 +161,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "one"
+          }
+        }
+      }
+    },
+    "right" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Right"
           }
         }
       }
@@ -206,7 +228,6 @@
       }
     },
     "text.configureMatch" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -239,16 +260,6 @@
     },
     "text.game_mode" : {
 
-    },
-    "text.left" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Left"
-          }
-        }
-      }
     },
     "text.location" : {
       "extractionState" : "manual",
@@ -300,16 +311,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Results"
-          }
-        }
-      }
-    },
-    "text.right" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Right"
           }
         }
       }

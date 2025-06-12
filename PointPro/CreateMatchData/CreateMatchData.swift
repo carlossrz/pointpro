@@ -33,8 +33,8 @@ struct CreateMatchData: View {
                 set: { newMatch.teammates = $0 }
             ))
             Picker("text.selectposition", selection: $newMatch.position) {
-                Text("text.left").tag(PlayerSide.left)
-                Text("text.right").tag(PlayerSide.right)
+                Text("left").tag(PlayerSide.left)
+                Text("right").tag(PlayerSide.right)
             }
             DatePicker("text.date", selection: $newMatch.date, displayedComponents: .date)
                 .datePickerStyle(.compact)

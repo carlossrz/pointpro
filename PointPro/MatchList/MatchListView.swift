@@ -12,60 +12,66 @@ struct MatchListView: View {
     @Query(sort: \MatchData.date,order: .reverse) private var matches: [MatchData]
     @Environment(\.modelContext) private var context
     
-    //@StateObject var vm = MatchListViewModel()
     @State var showCreate: Bool = false
     @State private var matchEdit: MatchData?
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(matches){ match in
-                    PPMatchCell(matchData: match)
-                        .swipeActions {
-                            Button(role: .none) {
-                                withAnimation {
-                                    matchEdit = match
-                                }
-                            }label: {
-                                Label("key.edit", systemImage: "pencil")
-                                    .symbolVariant(.fill)
-                            }
-                            Button(role: .destructive) {
-                                withAnimation {
-                                    context.delete(match)
-                                    try? context.save()
-                                }
-                            } label: {
-                                Label("key.delete", systemImage: "trash")
-                                    .symbolVariant(.fill)
-                            }
-                        }
+                ForEach(matches) { match in
+                    NavigationLink(destination: MatchDetailView(match: .constant(match))) {
+                        PPMatchCell(matchData: match)
+                    }
+                    .listRowSeparator(.hidden)
                 }
+                .onDelete(perform: deleteMatches)
             }
-            .toolbar{
-                ToolbarItem(placement: .primaryAction, content: {
-                    Button{
-                        showCreate.toggle()
-                    } label: {
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { showCreate = true }) {
                         Image(systemName: "plus")
                     }
-                })
-            }.sheet(isPresented: $showCreate) {
+                }
+            }
+            .sheet(isPresented: $showCreate) {
                 NavigationStack {
                     CreateMatchData(newMatch: .constant(MatchData()))
                 }
                 .presentationDragIndicator(.visible)
-            }.sheet(item: $matchEdit) {
-                matchEdit = nil
-            } content: { item in
-                MatchDetailView(match: .constant(item))
-                    .presentationDragIndicator(.visible)
             }
-        }.navigationTitle("text.matchList")
+            .sheet(item: $matchEdit) { item in
+                MatchDetailView(match: .constant(item))
+            }
+            .navigationTitle("text.matchList")
+        }
+    }
+    
+    private func deleteMatches(at offsets: IndexSet) {
+        for index in offsets {
+            context.delete(matches[index])
+        }
+        try? context.save()
     }
 }
 
 
 #Preview {
     MatchListView()
+}
+
+
+struct RoundedCornerShape: Shape {
+    var corners: UIRectCorner
+    var radius: CGFloat
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        return Path(path.cgPath)
+    }
 }
