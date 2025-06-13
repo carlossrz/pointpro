@@ -30,7 +30,7 @@ struct ScoreBoardView: View {
                         }
                     }
                 }.padding(.top,-25)
-        }.backgroundGrid()
+        }.backgroundGrid(backgroundVersion: .watchOS)
     }
 
     @ViewBuilder

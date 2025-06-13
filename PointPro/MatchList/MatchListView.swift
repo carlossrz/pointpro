@@ -26,6 +26,7 @@ struct MatchListView: View {
                 }
                 .onDelete(perform: deleteMatches)
             }
+            .padding(.top,20)
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
             .toolbar {
@@ -45,6 +46,7 @@ struct MatchListView: View {
                 MatchDetailView(match: .constant(item))
             }
             .navigationTitle("text.matchList")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     

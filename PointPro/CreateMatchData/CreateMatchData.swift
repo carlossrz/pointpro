@@ -67,12 +67,12 @@ struct CreateMatchData: View {
                             .pickerStyle(.segmented)
                             .frame(maxWidth: .infinity)
                         }.frame(height: 80)
-                        Button("text.addset") {
+                        PPButton(text: "text.addset") {
                             let newGame = GameScore(team1: team1Score, team2: team2Score)
                             newMatch.games.append(newGame)
                             team1Score = 0
                             team2Score = 0
-                        }
+                        }.frame()
                     }.padding()
                 }
                 if newMatch.games.count > 0 {

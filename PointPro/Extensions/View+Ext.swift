@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func backgroundGrid(color: Color = .ppBlue) -> some View {
-        self.modifier(BackgroundModifier(color: color))
+    func backgroundGrid(color: Color = .ppBlue,backgroundVersion: BackgroundVersion) -> some View {
+        self.modifier(BackgroundModifier(color: color,backgroundVersion: backgroundVersion))
     }
 }

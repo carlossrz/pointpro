@@ -6,51 +6,45 @@
 //
 
 import SwiftUI
-
-// Pantalla destinada a la edicion de informacion del partido, exactamente cuando nos llega la info desde el reloj. aqui se podra complementar la informaicon que no recogemos desde el Apple Watch
 struct MatchDetailView: View {
-    
     @Environment(\.dismiss) var dismiss
     @Binding var match : MatchData
-    
     var body: some View {
-        ZStack {
-            Color.ppBlue
-                .ignoresSafeArea()
-            VStack {
-                VStack {
+        ScrollView{
+            VStack(spacing: 16) {
+                VStack(spacing: 8) {
                     Text(match.finalScore)
-                        .foregroundStyle( (match.isWinner) ? .ppGreenBall : .red)
-                        .font(.system(size: 70, weight: .bold))
-                    Text("\(match.date.shortFormatted)")
-                        .font(.system(size: 15, weight: .bold))
-                        .foregroundStyle(.white)
-                }.padding(.bottom,20)
-                Form {
-                    Section(header: Text("text.detailsMacthes")) {
-                        VStack(alignment: .leading) {
-                            TextField("text.location",text: Binding(
-                                get: { match.location ?? "" },
-                                set: { match.location = $0 }
-                            ))
-                            
-                        }
-                        VStack(alignment: .leading) {
-                            TextField("text.teammate",text: Binding(
-                                get: { match.teammates ?? "" },
-                                set: { match.teammates = $0 }
-                            ))
-                        }
+                        .font(.system(size: 60, weight: .bold))
+                        .foregroundColor(match.isWinner ? .ppGreenBall : .red)
+                    
+                    Text(match.date.shortFormatted)
+                        .font(.headline)
+                        .foregroundColor(.white)
+                }.padding(.top, -110)
+                PPSectionCard(title: "text.detailsMacthes".localizedValue) {
+                    VStack(alignment: .leading, spacing: 22) {
+                        TextField("text.location", text: Binding(
+                            get: { match.location ?? "" },
+                            set: { match.location = $0 }
+                        ))
+                        TextField("text.teammate", text: Binding(
+                            get: { match.teammates ?? "" },
+                            set: { match.teammates = $0 }
+                        ))
+                        Toggle("info.openset",isOn: $match.isOpenSet)
+                            .tint(Color.ppBlue)
+                        Picker("text.selectposition", selection: $match.position) {
+                            Text("left").tag(PlayerSide.left)
+                            Text("right").tag(PlayerSide.right)
+                        }.pickerStyle(SegmentedPickerStyle())
                     }
-                    Section(header: Text("text.results")) {
-                        PPResultsCardView(match: match)
-                    }.padding(-10)
                 }
-            }.padding(.top,30)
-            
-        }
-        
-        
+                PPSectionCard(title: "text.results".localizedValue.uppercased()) {
+                    PPResultsCardView(match: match)
+                }
+            }.padding(.top,150)
+                .padding(.horizontal)
+        }.backgroundGrid(backgroundVersion:.iOS)
     }
 }
 

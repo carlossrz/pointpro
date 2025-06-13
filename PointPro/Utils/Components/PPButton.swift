@@ -21,6 +21,7 @@ struct PPButton: View {
                     Text(text.localizedValue)
                         .font(.system(size: 20, weight: .light))
                         .padding(.horizontal, 10)
+                        .foregroundStyle(.white)
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 40)

@@ -44,7 +44,7 @@ struct StartMatchView: View {
                         }
                 }
                 .frame(width: screenSize.width, height: screenSize.height)
-                .backgroundGrid()
+                .backgroundGrid(backgroundVersion: .watchOS)
             }
         }
         .frame(width: screenSize.width, height: screenSize.height)
