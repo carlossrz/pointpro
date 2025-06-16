@@ -43,7 +43,7 @@ struct BackgroundModifier: ViewModifier {
         case .iOS:
             ZStack(alignment: .top) {
                 Color.gray.opacity(0.4).ignoresSafeArea()
-                CurvedHeader()
+                CurvedHeader(color: color)
                     .ignoresSafeArea(edges: .top)
                 content
             }
@@ -53,6 +53,7 @@ struct BackgroundModifier: ViewModifier {
     }
     
     struct CurvedHeader: View {
+        var color: Color = .ppBlue
         @State private var randomShape = RandomCurvedShape(
             control1Y: CGFloat.random(in: 50...200),
             control2Y: CGFloat.random(in: 50...200),
@@ -64,7 +65,7 @@ struct BackgroundModifier: ViewModifier {
                 randomShape
                     .fill(
                         LinearGradient(
-                            colors: [.blue.opacity(0.8), .ppBlue],
+                            colors: [.blue.opacity(0.8), color],
                             startPoint: .leading,
                             endPoint: .bottom
                         )

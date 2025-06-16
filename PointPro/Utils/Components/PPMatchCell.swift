@@ -27,15 +27,14 @@ struct PPMatchCell: View {
                         .font(.subheadline)
                         .foregroundColor(.white.opacity(0.8))
                     
-                    HStack(spacing:2) {
+                    HStack(spacing:10) {
                         Text("\(matchData.date.shortFormatted)")
                             .foregroundColor(.white)
                             .font(.caption)
-                        HStack {
+                        HStack(spacing:2) {
                             Image(systemName: "figure.racquetball")
                             Text("\(matchData.position.localized)")
-                                
-                        }.foregroundColor(.white)
+                        }.foregroundColor(.ppGreenBall)
                             .font(.caption)
                     }
                 }

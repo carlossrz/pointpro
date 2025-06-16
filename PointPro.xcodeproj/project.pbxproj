@@ -91,6 +91,7 @@
 				Utils/Components/PPResultsCardView.swift,
 				Utils/Components/PPScoreBoard.swift,
 				Utils/Components/PPSectionCard.swift,
+				Utils/Components/PPToggleOptions.swift,
 			);
 			target = 9DD7EEE02DBF7564002D78A7 /* PointWatch Watch App */;
 		};

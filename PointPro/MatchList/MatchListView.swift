@@ -37,10 +37,8 @@ struct MatchListView: View {
                 }
             }
             .sheet(isPresented: $showCreate) {
-                NavigationStack {
-                    CreateMatchData(newMatch: .constant(MatchData()))
-                }
-                .presentationDragIndicator(.visible)
+                CreateMatchData(newMatch: .constant(MatchData()))
+                    .presentationDragIndicator(.visible)
             }
             .sheet(item: $matchEdit) { item in
                 MatchDetailView(match: .constant(item))

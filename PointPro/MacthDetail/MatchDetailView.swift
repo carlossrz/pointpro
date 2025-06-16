@@ -20,7 +20,7 @@ struct MatchDetailView: View {
                     Text(match.date.shortFormatted)
                         .font(.headline)
                         .foregroundColor(.white)
-                }.padding(.top, -110)
+                }
                 PPSectionCard(title: "text.detailsMacthes".localizedValue) {
                     VStack(alignment: .leading, spacing: 22) {
                         TextField("text.location", text: Binding(
@@ -31,20 +31,39 @@ struct MatchDetailView: View {
                             get: { match.teammates ?? "" },
                             set: { match.teammates = $0 }
                         ))
-                        Toggle("info.openset",isOn: $match.isOpenSet)
-                            .tint(Color.ppBlue)
-                        Picker("text.selectposition", selection: $match.position) {
-                            Text("left").tag(PlayerSide.left)
-                            Text("right").tag(PlayerSide.right)
-                        }.pickerStyle(SegmentedPickerStyle())
+                    }
+                }
+                PPSectionCard(title: "") {
+                    HStack(spacing:20){
+                        PPToggleOptions(
+                            value: $match.position,
+                            firstValue: PlayerSide.left,
+                            secondValue: PlayerSide.right,
+                            firstLabel:  PlayerSide.left.localized,
+                            secondLabel: PlayerSide.right.localized,
+                            firstColor: .ppBlue,
+                            secondColor: .ppBlue,
+                            title: "text.selectposition"
+                        )
+                        Spacer()
+                        PPToggleOptions(
+                            value: $match.isOpenSet,
+                            firstValue: true,
+                            secondValue: false,
+                            firstLabel: "text.openning",
+                            secondLabel: "text.receiving",
+                            firstColor: .ppBlue,
+                            secondColor: .ppBlue,
+                            title: "info.openset"
+                        )
                     }
                 }
                 PPSectionCard(title: "text.results".localizedValue.uppercased()) {
                     PPResultsCardView(match: match)
                 }
-            }.padding(.top,150)
-                .padding(.horizontal)
+            }.padding(.horizontal)
         }.backgroundGrid(backgroundVersion:.iOS)
+         .contentMargins(.top,30)
     }
 }
 

@@ -304,6 +304,28 @@
         }
       }
     },
+    "text.openning" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Openning"
+          }
+        }
+      }
+    },
+    "text.receiving" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receiving"
+          }
+        }
+      }
+    },
     "text.results" : {
       "extractionState" : "manual",
       "localizations" : {

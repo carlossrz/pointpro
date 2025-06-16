@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct PPSectionCard<Content: View>: View {
-    let title: String
+    let title: String?
     let content: () -> Content
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(title)
-                .font(.caption)
-                .foregroundColor(.ppBlue)
+            if let title, !title.isEmpty {
+                Text(title)
+                    .font(.caption)
+                    .foregroundColor(.ppBlue)
+            }
             content()
         }
         .padding()
@@ -26,7 +28,7 @@ struct PPSectionCard<Content: View>: View {
 }
 
 #Preview {
-    PPSectionCard(title: "Estadísticas") {
+    PPSectionCard(title: "Estadisticas") {
         VStack(alignment: .leading) {
             Text("Ganados: 10")
             Text("Perdidos: 2")
