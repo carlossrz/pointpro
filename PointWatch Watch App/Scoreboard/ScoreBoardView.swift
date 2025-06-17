@@ -46,8 +46,9 @@ struct ScoreBoardView: View {
     var ScoreBoardView: some View {
         VStack(spacing:20){
             HStack{
-                PPScoreBoard(isOpenSet: vm.isOpenSet,
-                             globalPointsMatch: vm.matchData.games, liveGameScores: vm.liveGameScores)
+                PPScoreBoard(isOpenSet: vm.matchData.isOpenSet,
+                             globalPointsMatch: vm.matchData.games,
+                             liveGameScores: vm.liveGameScores)
                 Spacer()
                 
             }

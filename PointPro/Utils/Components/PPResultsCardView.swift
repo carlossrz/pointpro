@@ -14,7 +14,6 @@ struct PPResultsCardView: View {
         GridItem(.adaptive(minimum: 90))
     ]
     var body: some View {
-        
         LazyVGrid(columns:adaptiveColumns,spacing: 0){
             ForEach(Array(match.games.enumerated()), id: \.element) { index, game in
                 PPResult(pTeam1: game.team1,
@@ -22,7 +21,7 @@ struct PPResultsCardView: View {
                          number: index)
             }
 
-        }.padding(15)
+        }
     }
 }
 

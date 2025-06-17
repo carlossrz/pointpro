@@ -28,7 +28,7 @@ struct PPToggleOptions<T: Equatable>: View {
             Button(action: {
                 value = (value == firstValue) ? secondValue : firstValue
             }) {
-                Text(value == firstValue ? firstLabel : secondLabel)
+                Text(LocalizedStringKey(value == firstValue ? firstLabel : secondLabel))
                     .font(.headline)
                     .padding()
                     .frame(width: 140)

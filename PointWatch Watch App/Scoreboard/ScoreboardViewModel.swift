@@ -12,8 +12,6 @@ class ScoreboardViewModel: ObservableObject {
     @Published var liveGameScores: [(team1: Int, team2: Int)] = [(0,0)]
     
     @Published var matchData = MatchData()
-    
-    @Published var isOpenSet: Bool = false
     @Published var shouldDismiss = false
     
     let sessionManager = WatchSessionManager()
@@ -106,7 +104,6 @@ class ScoreboardViewModel: ObservableObject {
         liveGameScores = [(0,0)]
         globalPointA = 0
         globalPointB = 0
-        isOpenSet.toggle()
         resetPoints()
         
     }

@@ -71,16 +71,16 @@ struct StartMatchView: View {
                     shouldNavigate.toggle()
                 }
             }.navigationBarBackButtonHidden(true)
-                .navigationDestination(isPresented: $shouldNavigate) {
-                    ScoreBoardView(matchData: matchData) {
-                        withAnimation(.easeInOut) {
-                            isStart = false
-                            expanded = false
-                            matchData = MatchData()
-                        }
+             .navigationDestination(isPresented: $shouldNavigate) {
+                ScoreBoardView(matchData: matchData) {
+                    withAnimation(.easeInOut) {
+                        isStart = false
+                        expanded = false
+                        matchData = MatchData()
                     }
-                }
-                .padding(.top,-15)
+                 }
+             }
+            .padding(.top,-15)
         }
     }
 }
