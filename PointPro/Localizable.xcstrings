@@ -207,6 +207,7 @@
 
     },
     "text.addset" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -258,8 +259,15 @@
         }
       }
     },
-    "text.game_mode" : {
-
+    "text.draws" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Draws"
+          }
+        }
+      }
     },
     "text.location" : {
       "extractionState" : "manual",
@@ -268,6 +276,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Location"
+          }
+        }
+      }
+    },
+    "text.losses" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Losses"
           }
         }
       }
@@ -315,6 +333,17 @@
         }
       }
     },
+    "text.performSide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance by side"
+          }
+        }
+      }
+    },
     "text.receiving" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -338,11 +367,32 @@
       }
     },
     "text.selectposition" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select position"
+          }
+        }
+      }
+    },
+    "text.settings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
+    "text.stadistics" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stadistics"
           }
         }
       }
@@ -354,6 +404,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Teammate:"
+          }
+        }
+      }
+    },
+    "text.wins" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wins"
           }
         }
       }

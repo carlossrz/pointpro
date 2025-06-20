@@ -56,10 +56,10 @@ class MatchData {
         team1Wins > team2Wins
     }
     
-    private var team1Wins: Int {
+    var team1Wins: Int {
         games.filter { $0.team1 > $0.team2 }.count
     }
-    private var team2Wins: Int {
+    var team2Wins: Int {
         games.filter { $0.team2 > $0.team1 }.count
     }
     

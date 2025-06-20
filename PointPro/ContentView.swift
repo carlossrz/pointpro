@@ -18,6 +18,16 @@ struct ContentView: View {
                     Image(systemName: "house.fill")
                     Text("text.matchlist")
                 }
+            StadisticsView()
+                .tabItem {
+                    Image(systemName: "chart.bar.xaxis")
+                    Text("text.stadistics")
+                }
+            Text("Settings  1.Changes color 2.Nuevas pistas")
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("text.settings")
+                }
         }
     }
 }
