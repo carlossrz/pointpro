@@ -49,7 +49,7 @@ struct SidePerformanceChart: View {
             "text.losses".localizedValue: .ppBlue.opacity(0.8)
         ])
         .chartLegend(position: .top)
-        .frame(height: 200)
+        .frame(height: 150)
     }
 }
 

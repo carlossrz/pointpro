@@ -46,7 +46,20 @@ final class StatisticsViewModel: ObservableObject {
     var rightMatchesLost: Int{
         matches.filter { !$0.isWinner && $0.position == .right }.count
     }
-    
+    //Cuando abres el partido
+    var wonMatchesWhenOpening: Int {
+        matches.filter { $0.isWinner && $0.isOpenSet }.count
+    }
+    var totalMatchesWhenOpening: Int {
+        matches.filter { $0.isOpenSet }.count
+    }
+    // Cuando recibes
+    var wonMatchesWhenReceiving: Int {
+        matches.filter { $0.isWinner && !$0.isOpenSet }.count
+    }
+    var totalMatchesWhenReceiving: Int {
+        matches.filter { !$0.isOpenSet }.count
+    }
     var sideStats: [PositionStat] {
         [
             .init(side: "left".localizedValue, result: "text.wins".localizedValue, count: leftMatchesWin),
