@@ -5,8 +5,8 @@
 //  Created by Carlos Suarez on 6/6/25.
 //
 
-import WatchConnectivity
 import Foundation
+import WatchConnectivity
 
 class WatchSessionManager: NSObject, WCSessionDelegate {
     
@@ -19,7 +19,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
             WCSession.default.activate()
         }
     }
-    
+
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: (any Error)?) {
         if let error = error {
             print("❌ Activación fallida: \(error.localizedDescription)")
@@ -27,34 +27,46 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
             print("✅ Sesión activada con estado: \(activationState.rawValue)")
         }
     }
-    
+
+    //Envio en tiempo real
     func sendMessageMatchResult(match: MatchData) {
+        print("➡️ Intentando enviar match con sendMessage")
+        
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         do {
             let data = try encoder.encode(match.asCodable())
             let message: [String: Any] = ["matchData": data]
-            WCSession.default.sendMessage(message, replyHandler: nil) { error in
-                print("Error en sendMessage:", error)
+
+            if WCSession.default.isReachable {
+                print("iPhone alcanzable. Enviando datos...")
+                WCSession.default.sendMessage(message, replyHandler: nil) { error in
+                    print("❌ Error en sendMessage:", error)
+                }
+            } else {
+                print("⚠️ iPhone no está alcanzable. No se pudo enviar el mensaje.")
             }
+
         } catch {
-            print("Error codificando MatchData:", error)
+            print("❌ Error codificando MatchData:", error)
         }
     }
-    
+
+    //Envio en background
     func sendMatchResult(match: MatchData) {
         let session = WCSession.default
-        
+        print("➡️ Intentando enviar match con transferUserInfo")
+
         guard session.activationState == .activated else {
             print("❌ Sesión no activada en Watch")
             return
         }
-        
+
         guard session.isCompanionAppInstalled else {
             print("❌ La app del iPhone no está instalada")
             return
         }
-        
+
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         do {
@@ -65,17 +77,15 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
             ]
             WCSession.default.transferUserInfo(info)
         } catch {
-            print("Error codificando MatchData:", error)
+            print("❌ Error codificando MatchData:", error)
         }
     }
-    
+
     func session(_ session: WCSession, didFinish userInfoTransfer: WCSessionUserInfoTransfer, error: Error?) {
         if let error = error {
-            print("Transferencia fallida: \(error.localizedDescription)")
+            print("❌ Transferencia fallida: \(error.localizedDescription)")
         } else {
-            print("Datos enviados exitosamente desde el Watch.")
+            print("✅ Datos enviados exitosamente desde el Watch.")
         }
     }
 }
-
-

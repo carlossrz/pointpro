@@ -11,8 +11,9 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var matches: [MatchData]
+    
     var body: some View {
-        TabView{
+        TabView {
             MatchListView()
                 .tabItem {
                     Image(systemName: "house.fill")
@@ -28,6 +29,9 @@ struct ContentView: View {
                     Image(systemName: "gear")
                     Text("text.settings")
                 }
+        }
+        .onAppear {
+            CRUDDataService.shared.configure(modelContext)
         }
     }
 }
