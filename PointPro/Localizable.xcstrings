@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%@" : {
 
     },
@@ -120,7 +123,7 @@
       }
     },
     "key.delete" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -131,7 +134,7 @@
       }
     },
     "key.edit" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -142,6 +145,7 @@
       }
     },
     "left" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -166,6 +170,7 @@
       }
     },
     "right" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -176,7 +181,7 @@
       }
     },
     "save.match" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -187,6 +192,9 @@
       }
     },
     "set %@" : {
+
+    },
+    "Settings  1.Changes color 2.Nuevas pistas" : {
 
     },
     "start" : {
@@ -200,14 +208,8 @@
         }
       }
     },
-    "Team 1" : {
-
-    },
-    "Team 2" : {
-
-    },
     "text.addset" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -265,6 +267,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Draws"
+          }
+        }
+      }
+    },
+    "text.latestMatches" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latest matches"
           }
         }
       }
@@ -367,7 +380,7 @@
       }
     },
     "text.selectposition" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -415,6 +428,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wins"
+          }
+        }
+      }
+    },
+    "text.winsOpening" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wins when serving first"
+          }
+        }
+      }
+    },
+    "text.winsReceiving" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wins when receiving first"
           }
         }
       }

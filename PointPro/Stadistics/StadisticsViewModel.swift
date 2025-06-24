@@ -12,6 +12,10 @@ import Combine
 final class StatisticsViewModel: ObservableObject {
     @Published var matches: [MatchData] = []
     
+    var lastThreeMatches: [MatchData] {
+        Array(matches.prefix(3))
+    }
+    
     var totalMatches: Int {
         matches.count
     }

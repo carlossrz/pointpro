@@ -21,11 +21,11 @@ struct SidePerformanceChart: View {
     var body: some View {
         Chart(data) { stat in
             BarMark(
-                x: .value("Lado", stat.side),
-                y: .value("Cantidad", stat.count)
+                x: .value("", stat.side),
+                y: .value("", stat.count)
             )
-            .foregroundStyle(by: .value("Resultado", stat.result))
-            .position(by: .value("Resultado", stat.result))
+            .foregroundStyle(by: .value("", stat.result))
+            .position(by: .value("", stat.result))
             .annotation(position: .top) {
                 Text("\(stat.count)")
                     .font(.caption)

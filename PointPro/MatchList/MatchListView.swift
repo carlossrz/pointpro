@@ -20,7 +20,7 @@ struct MatchListView: View {
             List {
                 ForEach(matches) { match in
                     NavigationLink(destination: MatchDetailView(match: .constant(match))) {
-                        PPMatchCell(matchData: match)
+                        PPMatchCell(matchData: match,cellType: .menu)
                     }
                     .listRowSeparator(.hidden)
                 }

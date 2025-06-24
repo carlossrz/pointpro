@@ -75,7 +75,7 @@ struct CreateMatchData: View {
                     if newMatch.games.count < newMatch.pointType.numberOfGames {
                         VStack {
                             VStack {
-                                Picker("Team 1", selection: $team1Score) {
+                                Picker("", selection: $team1Score) {
                                     ForEach(scoreOptions, id: \.self) { score in
                                         Text("\(score)")
                                     }
@@ -83,7 +83,7 @@ struct CreateMatchData: View {
                                 .pickerStyle(.segmented)
                                 .frame(maxWidth: .infinity)
                                 
-                                Picker("Team 2", selection: $team2Score) {
+                                Picker("", selection: $team2Score) {
                                     ForEach(scoreOptions, id: \.self) { score in
                                         Text("\(score)")
                                     }
