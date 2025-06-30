@@ -54,33 +54,56 @@ struct StartMatchView: View {
     @ViewBuilder
     var InfoMatchData: some View {
         NavigationStack {
-            VStack(alignment:.leading, spacing:4) {
-                Text("info.match.title")
-                Picker("info.pointsInGame", selection: $matchData.pointType) {
-                    ForEach(MatchFormat.allCases) { game in
-                        Text(game.rawValue).tag(game)
-                    }
+            TabView {
+                VStack(alignment:.leading, spacing:10) {
+                    Text("info.match.title")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.ppBlue)
+                    PPToggleOptions(
+                        value: $matchData.isOpenSet,
+                        firstValue: true,
+                        secondValue: false,
+                        firstLabel: "text.openning",
+                        secondLabel: "text.receiving",
+                        firstColor: .ppBlue,
+                        secondColor: .ppBlue,
+                        title: "info.openset"
+                    )
+                    PPToggleOptions(
+                        value: $matchData.position,
+                        firstValue: PlayerSide.right,
+                        secondValue: PlayerSide.left,
+                        firstLabel:  PlayerSide.right.localized,
+                        secondLabel: PlayerSide.left.localized,
+                        firstColor: .ppBlue,
+                        secondColor: .ppBlue,
+                        title: "text.selectposition"
+                    )
                 }
-                .frame(height: 70)
-                .padding(.horizontal, 10)
-                .tint(.red)
-                Toggle("info.openset",isOn: $matchData.isOpenSet)
-                    .padding(.horizontal,10)
-                    .tint(Color.ppGreenBall)
-                PPButtonSlider {
-                    shouldNavigate.toggle()
+                .padding(.top,-20)
+                VStack(alignment:.leading, spacing:10){
+                    Picker("", selection: $matchData.pointType) {
+                        ForEach(MatchFormat.allCases) { game in
+                            Text(game.rawValue).tag(game)
+                        }
+                    }.frame(height: 80)
+                    PPButtonSlider {
+                        shouldNavigate.toggle()
+                    }.frame(height: 50)
                 }
-            }.navigationBarBackButtonHidden(true)
-             .navigationDestination(isPresented: $shouldNavigate) {
+                .padding(.top,-20)
+            }
+            .tabViewStyle(.page)
+            .navigationBarBackButtonHidden(true)
+            .navigationDestination(isPresented: $shouldNavigate) {
                 ScoreBoardView(matchData: matchData) {
                     withAnimation(.easeInOut) {
                         isStart = false
                         expanded = false
                         matchData = MatchData()
                     }
-                 }
-             }
-            .padding(.top,-15)
+                }
+            }
         }
     }
 }

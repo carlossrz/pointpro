@@ -71,7 +71,7 @@ class MatchData {
         self.games = games
         self.pointType = pointType
         self.isOpenSet = isOpenSet
-        self.position = .right
+        self.position = position
     }
     
     init() {

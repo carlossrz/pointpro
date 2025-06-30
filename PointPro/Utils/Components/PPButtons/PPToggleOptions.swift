@@ -23,6 +23,7 @@ struct PPToggleOptions<T: Equatable>: View {
                 Text(LocalizedStringKey(title))
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading) 
             }
             
             Button(action: {
@@ -31,7 +32,7 @@ struct PPToggleOptions<T: Equatable>: View {
                 Text(LocalizedStringKey(value == firstValue ? firstLabel : secondLabel))
                     .font(.headline)
                     .padding()
-                    .frame(width: 140)
+                    .frame(maxWidth: .infinity)
                     .background(value == firstValue ? firstColor : secondColor)
                     .foregroundColor(.white)
                     .cornerRadius(10)
@@ -42,12 +43,15 @@ struct PPToggleOptions<T: Equatable>: View {
 }
 
 #Preview {
-    PPToggleOptions(value: .constant(false),
-                    firstValue: true,
-                    secondValue: false,
-                    firstLabel: "Option One",
-                    secondLabel: "Option Two",
-                    firstColor: .ppBlue,
-                    secondColor: .ppGreenBall,
-                    title: "")
+    ZStack {
+        PPToggleOptions(value: .constant(false),
+                        firstValue: true,
+                        secondValue: false,
+                        firstLabel: "Option One",
+                        secondLabel: "Option Two",
+                        firstColor: .ppBlue,
+                        secondColor: .ppGreenBall,
+                        title: "luis")
+    }
+    
 }
